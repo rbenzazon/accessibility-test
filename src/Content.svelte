@@ -16,6 +16,7 @@
 	let nameHasErrors = false;
 	let valid = false;
 	let hasSubmitted = false;
+	let submitted = false;
 
 	const showDialog = () => {
 		open(
@@ -65,10 +66,13 @@
 	const onSubmit = (e) => {
 		hasSubmitted = true;
 		validate();
+		if(valid){
+			submitted = true
+		}
 	}
 
 </script>
-
+	{#if submitted === false}
 	<Tabs >
 		<TabList>
 			<Tab label="Access dialog tab">Dialog</Tab>
@@ -85,16 +89,29 @@
 			<div class="tabPanel">
 				<form class="form">
 					<!--<label for="name" aria-label={nameHasErrors && hasSubmitted?"The name is invalid":"name"}>Name</label>-->
-					<input placeholder="Name" type="text" aria-label={nameHasErrors && hasSubmitted?"The name is invalid":"name"} id="name" name="name" class:error={nameHasErrors && hasSubmitted} on:input={onChange}/>
+					<input placeholder="Name*" type="text" aria-label={nameHasErrors && hasSubmitted?"The name is invalid":"name"} id="name" name="name" class:error={nameHasErrors && hasSubmitted} on:input={onChange}/>
 					<!--<label for="email" aria-label={emailHasErrors && hasSubmitted?"The email is invalid":"email"}>E-mail</label>-->
-					<input placeholder="E-mail" type="text" aria-label={emailHasErrors && hasSubmitted?"The email is invalid":"email"} id="email" name="email" class:error={emailHasErrors && hasSubmitted} on:input={onChange} />
+					<input placeholder="E-mail*" type="text" aria-label={emailHasErrors && hasSubmitted?"The email is invalid":"email"} id="email" name="email" class:error={emailHasErrors && hasSubmitted} on:input={onChange} />
 					<button type="button" on:click={onSubmit} aria-label={valid || !hasSubmitted ?"Submit":"Fill every field before submitting"}>Submit</button>
 				</form>
 			</div>
 		</TabPanel>
 	</Tabs>
+	{:else}
+		<div class="thankYou">
+			<h1>Thank you</h1>
+			<p>You completed the registration process.</p>
+		</div>
+	{/if}
 
 <style>
+.thankYou{
+	padding : 2rem;
+	margin: 5rem;
+	border: 1px solid #e0e0e0;
+	border-radius: 0.2rem;
+	box-shadow: 5px 5px 10px grey;
+}
 .error {
 	border-color: #e00000;
 }
