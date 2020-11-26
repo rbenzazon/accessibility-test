@@ -10,6 +10,9 @@
 </script>
 
 <style>
+	li {
+		display: inline-block;
+	}
 	button {
 		background: none;
 		border: 1px solid transparent	;
@@ -29,6 +32,8 @@
 	}
 </style>
 
+<li>
 <button aria-label={label} class:selected="{$selectedTab === tab}" on:click="{() => selectTab(tab)}" >
 	<slot></slot>
 </button>
+</li>

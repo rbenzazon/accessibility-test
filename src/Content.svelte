@@ -80,28 +80,34 @@
 		</TabList>
 
 		<TabPanel >
-			<div class="tabPanel">
-				<button on:click={showDialog}>Open a modal</button>
-			</div>
+			<main class="tabPanel">
+				<article>
+					<button on:click={showDialog}>Open a modal</button>
+				</article>
+			</main>
 		</TabPanel>
 
 		<TabPanel  >
-			<div class="tabPanel">
-				<form class="form">
-					<!--<label for="name" aria-label={nameHasErrors && hasSubmitted?"The name is invalid":"name"}>Name</label>-->
-					<input placeholder="Name*" type="text" aria-label={nameHasErrors && hasSubmitted?"The name is invalid":"name"} id="name" name="name" class:error={nameHasErrors && hasSubmitted} on:input={onChange}/>
-					<!--<label for="email" aria-label={emailHasErrors && hasSubmitted?"The email is invalid":"email"}>E-mail</label>-->
-					<input placeholder="E-mail*" type="text" aria-label={emailHasErrors && hasSubmitted?"The email is invalid":"email"} id="email" name="email" class:error={emailHasErrors && hasSubmitted} on:input={onChange} />
-					<button type="button" on:click={onSubmit} aria-label={valid || !hasSubmitted ?"Submit":"Fill every field before submitting"}>Submit</button>
-				</form>
-			</div>
+			<main class="tabPanel">
+				<article>
+					<form class="form">
+						<!--<label for="name" aria-label={nameHasErrors && hasSubmitted?"The name is invalid":"name"}>Name</label>-->
+						<input placeholder="Name*" type="text" aria-label={nameHasErrors && hasSubmitted?"The name is invalid":"name"} id="name" name="name" class:error={nameHasErrors && hasSubmitted} on:input={onChange}/>
+						<!--<label for="email" aria-label={emailHasErrors && hasSubmitted?"The email is invalid":"email"}>E-mail</label>-->
+						<input placeholder="E-mail*" type="text" aria-label={emailHasErrors && hasSubmitted?"The email is invalid":"email"} id="email" name="email" class:error={emailHasErrors && hasSubmitted} on:input={onChange} />
+						<button type="button" on:click={onSubmit} aria-label={valid || !hasSubmitted ?"Submit":"Fill every field before submitting"}>Submit</button>
+					</form>
+				</article>
+			</main>
 		</TabPanel>
 	</Tabs>
 	{:else}
-		<div class="thankYou">
-			<h1>Thank you</h1>
-			<p>You completed the registration process.</p>
-		</div>
+		<main class="thankYou">
+			<article>
+				<h1>Thank you</h1>
+				<p>You completed the registration process.</p>
+			</article>
+		</main>
 	{/if}
 
 <style>

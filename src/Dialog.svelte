@@ -34,21 +34,21 @@
 		justify-content: space-between;
 	}
 
-	p {
+	article {
 		padding : 2rem;
 	}
 </style>
 
 
 
-<p>{@html message}</p>
+<article>{@html message}</article>
 
 {#if hasForm}
 	<input
     type="text"
 	  bind:value
 	  on:keydown={e => e.which === 13 && _onOkay()} />
+	<div class="buttons">
+	</div>
 {/if}
 
-<div class="buttons">
-</div>
